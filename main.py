@@ -20,36 +20,46 @@ answer2 = numbers[findAnswer2]
 answer3 = numbers[findAnswer3]
 answer4 = numbers[findAnswer4]
 print(answer1, answer2, answer3, answer4)
+def getGuess():
+    global guess1, guess2, guess3, guess4
+    guess = input("Enter your guess for the code (four digits, must be any number from 1-9): ")
+    guess1 = int(guess[findGuess1])
+    guess2 = int(guess[findGuess2])
+    guess3 = int(guess[findGuess3])
+    guess4 = int(guess[findGuess4])
+    print(guess1, guess2, guess3, guess4)
+getGuess()
 
-guess = input("Enter your guess for the code (four digits, must be any number from 1-9): ")
+def checkGuess():
+    if guess1 == answer1:
+        correct1 = True
+    elif guess1 in (answer2, answer3, answer4):
+        correct1 = 1
+    else:
+        correct1 = False
 
-guess1 = int(guess[findGuess1])
-guess2 = int(guess[findGuess2])
-guess3 = int(guess[findGuess3])
-guess4 = int(guess[findGuess4])
-print(guess1, guess2, guess3, guess4)
+    if guess2 == answer2:
+        correct2 = True
+    elif guess1 in (answer1, answer3, answer4):
+        correct2 = 1
+    else:
+        correct2 = False
 
-if guess1 == answer1:
-    correct1 = True
-else:
-    correct1 = False
+    if guess3 == answer3:
+        correct3 = True
+    elif guess3 in (answer1, answer2, answer4):
+        correct3 = 1
+    else:
+        correct3 = False
 
-if guess2 == answer2:
-    correct2 = True
-else:
-    correct2 = False
-
-if guess3 == answer3:
-    correct3 = True
-else:
-    correct3 = False
-
-if guess4 == answer4:
-    correct4 = True
-else:
-    correct4 = False
-
-
+    if guess4 == answer4:
+        correct4 = True
+    elif guess4 in (answer1, answer2, answer3):
+        correct3 = 1
+    else:
+        correct4 = False
+    print(correct1, correct2, correct3, correct4)
+checkGuess()
 
 if correct1 and correct2 and correct3 and correct4:
     print("Correct! You win!")
