@@ -5,10 +5,10 @@ numbers = ran.sample(range(1, 10), 4)
 
 print(numbers)
 
-correct1 = True
-correct2 = True
-correct3 = True
-correct4 = True
+correct1 = 0
+correct2 = 0
+correct3 = 0
+correct4 = 0
 
 findAnswer1 = findGuess1 = 0
 findAnswer2 = findGuess2 = 1
@@ -31,39 +31,69 @@ def getGuess():
 getGuess()
 
 def checkGuess():
+    global correct1, correct2, correct3, correct4
     if guess1 == answer1:
-        correct1 = True
-    elif guess1 in (answer2, answer3, answer4):
         correct1 = 1
+    elif guess1 in (answer2, answer3, answer4):
+        correct1 = 2
     else:
-        correct1 = False
+        correct1 = 3
 
     if guess2 == answer2:
-        correct2 = True
-    elif guess1 in (answer1, answer3, answer4):
         correct2 = 1
+    elif guess2 in (answer1, answer3, answer4):
+        correct2 = 2
     else:
-        correct2 = False
-
+        correct2 = 3
+    
     if guess3 == answer3:
-        correct3 = True
+        correct3 = 1
     elif guess3 in (answer1, answer2, answer4):
-        correct3 = 1
+        correct3 = 2
     else:
-        correct3 = False
-
+        correct3 = 3
+    
     if guess4 == answer4:
-        correct4 = True
+        correct4 = 1
     elif guess4 in (answer1, answer2, answer3):
-        correct3 = 1
+        correct4 = 2
     else:
-        correct4 = False
-    print(correct1, correct2, correct3, correct4)
+        correct4 = 3
+    
 checkGuess()
 
-if correct1 and correct2 and correct3 and correct4:
+def guessResults():
+    if correct1 == 1:
+        print("The first number you guessed is correct.")
+    elif correct1 == 2:
+        print("The first number you guessed is in the wrong spot.")
+    else:
+        print("The first number you guessed is not in the code.")
+
+    if correct2 == 1:
+        print("The second number you guessed is correct.")
+    elif correct2 == 2:
+        print("The second number you guessed is in the wrong spot.")
+    else:
+        print("The second number you guessed is not in the code.")
+
+    if correct3 == 1:
+        print("The third number you guessed is correct.")
+    elif correct3 == 2:
+        print("The third number you guessed is in the wrong spot.")
+    else:
+        print("The third number you guessed is not in the code.")
+
+    if correct4 == 1:
+        print("The fourth number you guessed is correct.")
+    elif correct4 == 2:
+        print("The fourth number you guessed is in the wrong spot.")
+    else:
+        print("The fourth number you guessed is not in the code.")
+
+guessResults()
+
+if correct1 == correct2 == correct3 == correct4 == 1:
     print("Correct! You win!")
-elif correct1 or correct2 or correct3 or correct4:
-    print("At least one of these numbers is correct.")
 else:
-    print("None of these numbers are correct.")
+    print("blub blub vandal :D")
