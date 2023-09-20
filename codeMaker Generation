@@ -1,0 +1,13 @@
+CODEMAKERS NUMBER GENERATION - PSEUDOCODE
+
+BEGIN
+#Initialize an array of 9 numbers
+numbers = list(range(1, 10))
+
+#Shuffle the array using Fisher-Yates
+FOR i IN range(len(numbers))
+    LET j = i + int((len(numbers) - i) * random.random())
+    numbers[i], numbers[j] = numbers[j], numbers[i]
+    
+#Take the first 4 elements as the code
+uniquenumbers = numbers[:4]
